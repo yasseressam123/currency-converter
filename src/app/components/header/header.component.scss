@@ -1,0 +1,14 @@
+header{
+    .navbar-collapse{
+        flex: 0;
+    }
+    .navbar-brand{
+        color: #0c8dec;
+        font-weight: 600;
+        font-size: 20px;
+        img{
+            width: 50px;
+            margin-right: 10px;
+        }
+    }
+}

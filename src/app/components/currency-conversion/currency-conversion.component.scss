@@ -1,0 +1,24 @@
+@import '../../../styles.scss';
+
+section{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 40px 0px;
+    .currency-container{
+        width: 100%;
+        max-width: 500px;
+        justify-content: space-between;
+        display: flex;
+        border-radius: 8px;
+        border: solid 1px $primary;
+        padding: 14px 16px;
+        background-color: #0c8dec0f;
+        label{
+            display: block;
+            font-weight: bold;
+            color: $primary;
+            margin-bottom: 10px;
+        }
+    }
+}
