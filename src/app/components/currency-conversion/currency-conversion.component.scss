@@ -7,18 +7,34 @@ section{
     padding: 40px 0px;
     .currency-container{
         width: 100%;
-        max-width: 500px;
-        justify-content: space-between;
-        display: flex;
         border-radius: 8px;
         border: solid 1px $primary;
         padding: 14px 16px;
         background-color: #0c8dec0f;
+        .currency-form{
+            justify-content: space-between;
+            display: flex;
+            .currency-form-cont{
+                width: 46%;
+                .currency-input-cont{
+                    margin-bottom: 20px;
+                }
+            }
+        }
         label{
             display: block;
             font-weight: bold;
             color: $primary;
             margin-bottom: 10px;
         }
+        select,input{
+            width: 100%;
+            height: 35px;
+            padding: 0px 15px;
+        }
+    }
+    .currency-btn{
+        display: flex;
+        justify-content: end;
     }
 }

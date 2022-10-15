@@ -1,35 +1,38 @@
 <section>
     <div class="currency-container">
-        <div>
-            <div>
-                <label for="">From</label>
-                <select (change)="onChangeFromCurrency()" [(ngModel)]="InputsValue.from">
-                    <option *ngFor="let currency of currencySymbols" [ngValue]="currency.symbol">
-                        {{currency.name}}
-                    </option>
-                </select>
+        <div class="currency-form">
+            <div class="currency-form-cont">
+                <div class="currency-input-cont">
+                    <label for="">From</label>
+                    <select (change)="onChangeFromCurrency()" [(ngModel)]="InputsValue.from">
+                        <option *ngFor="let currency of currencySymbols" [ngValue]="currency.symbol">
+                            {{currency.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="currency-input-cont">
+                    <label for="">Amout</label>
+                    <input type="number" min="0" [(ngModel)]="InputsValue.amount" [disabled]="keyDisable">
+                </div>
             </div>
-            <div>
-                <label for="">Amout</label>
-                <input type="number" min="0" [(ngModel)]="InputsValue.amount" [disabled]="amoutDisable">
+            <div class="currency-form-cont">
+                <div class="currency-input-cont">
+                    <label for="">To</label>
+                    <select (change)="onChangeToCurrency()" [(ngModel)]="InputsValue.to">
+                        <option *ngFor="let currency of toCurrencySymbols" [ngValue]="currency.symbol">
+                            {{currency.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="currency-input-cont">
+                    <label for="">Result</label>
+                    <input type="text" [(ngModel)]="result" disabled>
+                </div>
             </div>
         </div>
-        <div>
-            <div>
-                <label for="">To</label>
-                <select (change)="onChangeToCurrency()" [(ngModel)]="InputsValue.to">
-                    <option *ngFor="let currency of toCurrencySymbols" [ngValue]="currency.symbol">
-                        {{currency.name}}
-                    </option>
-                </select>
-            </div>
-            <div>
-                <label for="">Result</label>
-                <input type="text" disabled>
-            </div>
-        </div>
-        <div>
-            <button class="btn btn-primary" [disabled]="buttonDisable" (click)="onConvert()">Convert</button>
+        <div class="currency-btn">
+            <button class="btn btn-primary mx-2" [disabled]="keyDisable" (click)="onConvert()">Convert</button>
+            <button class="btn btn-primary" [disabled]="keyDisable" (click)="onSwap()">Swap</button>
         </div>
     </div>
 </section>

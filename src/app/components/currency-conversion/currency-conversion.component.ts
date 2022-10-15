@@ -15,10 +15,10 @@ export class CurrencyConversionComponent implements OnInit {
   InputsValue:InputSearch = {
     from:"" ,
     to:"",
-    amount:"1"
+    amount:1
   };
-  amoutDisable:boolean = true;
-  buttonDisable:boolean = true;
+  keyDisable:boolean = true;
+  result:String = "";
 
   constructor(private pagesService: AppServiceService) { }
 
@@ -41,28 +41,38 @@ export class CurrencyConversionComponent implements OnInit {
   }
 
   onChangeToCurrency(){
-    this.amoutDisable=false;
+    this.keyDisable=false;
+    this.handleConversion();
   }
 
   getToCurrency(){
     console.log("here",this.InputsValue.from)
-    this.toCurrencySymbols = [...this.currencySymbols.filter((item)=>{
-        return item.symbol !== this.InputsValue.from
-    })];
+    this.toCurrencySymbols = [...this.currencySymbols]
+    // this.toCurrencySymbols = [...this.currencySymbols.filter((item)=>{
+    //     return item.symbol !== this.InputsValue.from
+    // })];
     console.log("here",this.toCurrencySymbols)
   }
 
   onConvert(){
+    this.handleConversion();
+  }
+
+  handleConversion(){
     this.pagesService.getCurrencyConversion(this.InputsValue).subscribe(
       (response: any) => {
-        console.log("yasser",response.symbols);
-        this.currencySymbols = [...Object.entries(response.symbols).map(([symbol, name]) => ({symbol, name}))];
-        console.log("yasser1",this.currencySymbols);
+        console.log("res",response)
+        this.result = response.result;
       },
       (error) => {
         console.log(error);
       }
     )
+  }
+
+  onSwap(){
+    [this.InputsValue.from, this.InputsValue.to] = [this.InputsValue.to, this.InputsValue.from];
+    this.handleConversion();
   }
 
 }
