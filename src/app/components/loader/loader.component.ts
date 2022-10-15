@@ -19,7 +19,7 @@ export class LoaderComponent implements OnInit {
     setTimeout(() => {
       this.spinner.show();
       this.router.navigate(['pages']);
-    }, 4000);; 
+    }, 2000);; 
   }
 
 }

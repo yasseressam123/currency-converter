@@ -4,7 +4,7 @@
             <div class="currency-form-cont">
                 <div class="currency-input-cont">
                     <label for="">From</label>
-                    <select (change)="onChangeFromCurrency()" [(ngModel)]="InputsValue.from">
+                    <select (change)="onChangeFromCurrency()" [disabled]="fromDisable" [(ngModel)]="InputsValue.from">
                         <option *ngFor="let currency of currencySymbols" [ngValue]="currency.symbol">
                             {{currency.name}}
                         </option>
@@ -32,7 +32,10 @@
         </div>
         <div class="currency-btn">
             <button class="btn btn-primary mx-2" [disabled]="keyDisable" (click)="onConvert()">Convert</button>
-            <button class="btn btn-primary" [disabled]="keyDisable" (click)="onSwap()">Swap</button>
+            <button class="btn btn-outline-primary" [disabled]="keyDisable" (click)="onSwap()">Swap</button>
         </div>
+    </div>
+    <div *ngIf="destailsDisplay === true">
+        <button (click)="handlePageDetails()" class="btn btn-outline-primary mt-5">Details</button>
     </div>
 </section>
