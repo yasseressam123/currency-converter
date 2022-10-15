@@ -29,17 +29,16 @@ export class CurrencyConversionComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    let x="l";
-    // this.pagesService.getCurrencySymbols().subscribe(
-    //   (response: any) => {
-    //     console.log("yasser",response.symbols);
-    //     this.currencySymbols = [...Object.entries(response.symbols).map(([symbol, name]) => ({symbol, name}))];
-    //     console.log("yasser1",this.currencySymbols);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // )
+    this.pagesService.getCurrencySymbols().subscribe(
+      (response: any) => {
+        console.log("yasser",response.symbols);
+        this.currencySymbols = [...Object.entries(response.symbols).map(([symbol, name]) => ({symbol, name}))];
+        console.log("yasser1",this.currencySymbols);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
     this.pagesService.Currency.subscribe(
       (data: InputSearch) => {
           this.getToCurrency();
